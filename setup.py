@@ -110,7 +110,7 @@ class PostInstallBuildPostgres(_install):
 
 setup(
     name='pgvenv',
-    version="0.1.0",
+    version="0.1.1",
     description='pip install pgvenv',
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
