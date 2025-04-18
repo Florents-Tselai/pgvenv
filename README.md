@@ -7,8 +7,16 @@
 `pgvenv` is a Python package that embeds a fully isolated PostgreSQL installation
 in your virtual environmnent.
 
-```shell
-pip install pgvenv
+```bash
+python3.11 -m venv ./venv
+
+source ./venv/bin/activate
+
+PGVERSION=17.4 pip install pgvenv --force-reinstall --no-cache-dir
+
+initdb ./pgdata
+
+postgres -D ./pgdata
 ```
 
 PostgreSQL will be built from source,
