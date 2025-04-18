@@ -34,7 +34,7 @@ You can now use your favorite scripts
 To install another version, be sure to force a non-cached version:
 
 ```shell
-PGVERSION=17.2 pip install pgvenv --force-reinstall --no-cache-dir -U
+PGVERSION=17.2 ./venv/bin/pip install pgvenv --force-reinstall --no-cache-dir -U
 ```
 
 ## Installation
