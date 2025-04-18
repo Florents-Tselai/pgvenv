@@ -19,7 +19,7 @@ will be put under `venv/bin` along with the `pip`, `python3` binaries.
 ```shell
 python3.11 -m venv ./venv
 
-PYTHONVERSION=17.4 CFLAGS="-O2" PGCONFIGUREFLAGS="--without-icu" \
+PGVERSION=17.4 CFLAGS="-O2" PGCONFIGUREFLAGS="--without-icu" \
 ./venv/bin/pip install pgvenv
 ```
 
