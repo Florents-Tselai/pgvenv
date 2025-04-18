@@ -1,0 +1,44 @@
+name: Test
+on: [ push, pull_request ]
+
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ ubuntu-22.04, macos-13 ]
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
+        pgversion: [ "17.1", "17.2", "17.3", "17.4" ]
+#        include:
+#          - os: ubuntu-22.04
+#            python-version: "3.11"
+#            pgversion: "17.4"
+#            use-system-libs: true
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Use Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Create venv
+        run: |
+          python3 -m venv /tmp/venv
+
+      - name: upgrade pip
+        run: |
+          /tmp/venv/bin/pip install --upgrade pip
+
+      - name: install in venv
+        run: |
+          PGVERSION=${{ matrix.pgversion }} \
+          PGCONFIGUREFLAGS="--without-icu" \
+          /tmp/venv/bin/pip install .
+
+      - name: Check pg_config version
+        run: |
+          /tmp/venv/bin/pg_config --version | grep "PostgreSQL ${{ matrix.pgversion }}"

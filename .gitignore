@@ -1,0 +1,7 @@
+/venv/
+_deps/
+.idea/
+*.token
+*.egg-info/
+dist/
+*.yml.1
